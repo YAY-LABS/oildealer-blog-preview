@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>오일딜러 블로그 Hero 이미지 방향 시안</title>
+  <style>
+    * { box-sizing:border-box; }
+    :root {
+      --brand:#721fe5;
+      --brand-dark:#5414c8;
+      --brand-soft:#f5f0ff;
+      --brand-line:#e4d7ff;
+      --ink:#15151a;
+      --text:#30313a;
+      --sub:#737782;
+      --line:#e8e9ee;
+      --paper:#fffdfa;
+      --font:Pretendard,"Pretendard Variable","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",sans-serif;
+    }
+    body { margin:0; font-family:var(--font); color:var(--text); background:#fff; letter-spacing:-.025em; word-break:keep-all; }
+    .top { border-bottom:1px solid var(--line); background:#fff; position:sticky; top:0; z-index:10; }
+    .top-inner { max-width:1180px; margin:0 auto; padding:18px 24px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; color:var(--ink); font-size:20px; }
+    .brand img { width:32px; height:32px; border-radius:9px; }
+    .top a { color:var(--brand); text-decoration:none; font-weight:800; }
+    main { max-width:1180px; margin:0 auto; padding:54px 24px 90px; }
+    .intro { max-width:780px; margin-bottom:44px; }
+    .eyebrow { display:inline-flex; padding:7px 12px; border-radius:999px; background:var(--brand-soft); color:var(--brand); font-size:14px; font-weight:850; }
+    h1 { margin:18px 0 14px; font-size:46px; line-height:1.12; letter-spacing:-.075em; color:var(--ink); }
+    .intro p { margin:0; color:#59606b; font-size:18px; line-height:1.75; }
+    .variant { display:grid; grid-template-columns:minmax(0, 820px) 280px; gap:42px; align-items:start; padding:46px 0; border-top:1px solid var(--line); }
+    .variant:first-of-type { border-top:0; }
+    .meta { padding-top:8px; }
+    .meta h2 { margin:0 0 10px; color:var(--ink); font-size:24px; letter-spacing:-.055em; }
+    .meta p { margin:0 0 16px; color:var(--sub); line-height:1.65; font-size:15px; }
+    .score { display:grid; gap:8px; color:#666c78; font-size:14px; }
+    .score b { color:var(--ink); }
+    .hero { width:100%; aspect-ratio:16/9; border-radius:24px; overflow:hidden; border:1px solid #eee8ff; background:#fffdfa; position:relative; box-shadow:0 18px 54px rgba(17,24,39,.055); }
+
+    /* A: no image, editorial article header */
+    .a { display:flex; align-items:center; padding:58px; background:linear-gradient(135deg,#fff 0%,#fbf8ff 100%); }
+    .a .panel { max-width:620px; }
+    .a .small { color:var(--brand); font-size:14px; font-weight:900; text-transform:uppercase; letter-spacing:.04em; }
+    .a .title { margin-top:18px; color:var(--ink); font-size:44px; line-height:1.12; letter-spacing:-.075em; font-weight:950; }
+    .a .line { width:76px; height:4px; border-radius:999px; background:var(--brand); margin:28px 0; }
+    .a .copy { color:#646b76; font-size:17px; line-height:1.7; max-width:520px; }
+    .a::after { content:""; position:absolute; right:70px; top:70px; width:170px; height:170px; border-radius:50%; background:radial-gradient(circle,#f4efff 0 54%,transparent 55%); }
+
+    /* B: flatter paper desk */
+    .b { background:#fffdfa; }
+    .b .surface { position:absolute; inset:42px; border-radius:26px; background:#fff; border:1px solid #efedf5; }
+    .b .memo { position:absolute; left:86px; top:74px; width:330px; height:220px; border-radius:10px; background:#fff; border:1px solid #e7e5ec; transform:rotate(-1.2deg); box-shadow:0 10px 28px rgba(17,24,39,.055); padding:26px; }
+    .b .memo small { color:var(--brand); font-weight:900; font-size:12px; text-transform:uppercase; }
+    .b .memo strong { display:block; margin-top:16px; color:var(--ink); font-size:26px; line-height:1.22; letter-spacing:-.06em; }
+    .b .chart { position:absolute; left:26px; right:26px; bottom:28px; height:64px; border-left:1px solid #e9e8ee; border-bottom:1px solid #e9e8ee; }
+    .b .chart:after { content:""; position:absolute; left:8px; top:16px; width:250px; height:36px; border-bottom:4px solid var(--brand); border-radius:55% 0 0 0; transform:skewY(7deg); opacity:.9; }
+    .b .quote { position:absolute; right:92px; top:104px; width:260px; height:176px; border-radius:10px; background:#fff; border:1px solid #e7e5ec; box-shadow:0 10px 28px rgba(17,24,39,.045); padding:24px; }
+    .b .quote b { color:var(--ink); font-size:20px; }
+    .b .quote span { display:block; height:9px; border-radius:999px; background:#eceef3; margin-top:16px; }
+    .b .quote span:nth-child(4) { width:72%; background:#ece3ff; }
+    .b .pen { position:absolute; right:360px; bottom:96px; width:170px; height:14px; border-radius:999px; background:linear-gradient(90deg,#5414c8,#a777ff); transform:rotate(-18deg); opacity:.82; }
+
+    /* C: abstract market layers */
+    .c { background:linear-gradient(135deg,#fffdfa,#fbf8ff); }
+    .c .layer { position:absolute; left:92px; right:92px; height:86px; border-radius:24px; background:#fff; border:1px solid #ebe6fb; box-shadow:0 12px 34px rgba(17,24,39,.045); }
+    .c .l1 { top:82px; }
+    .c .l2 { top:188px; left:132px; right:132px; }
+    .c .l3 { top:294px; left:172px; right:172px; background:#f8f4ff; }
+    .c .drop { position:absolute; left:160px; top:112px; width:520px; height:230px; }
+    .c .drop svg { width:100%; height:100%; }
+    .c .label { position:absolute; right:124px; top:94px; width:220px; color:var(--ink); font-size:30px; line-height:1.18; letter-spacing:-.065em; font-weight:900; }
+    .c .label small { display:block; color:var(--brand); font-size:13px; text-transform:uppercase; letter-spacing:.04em; margin-bottom:12px; }
+
+    /* D: photo-like soft office scene placeholder */
+    .d { background:linear-gradient(135deg,#f3f0ea 0%,#fffdfa 46%,#f7f2ff 100%); }
+    .d::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 24% 24%,rgba(255,255,255,.9),transparent 28%), radial-gradient(circle at 78% 28%,rgba(114,31,229,.10),transparent 26%); filter:blur(.2px); }
+    .d .photo-table { position:absolute; left:70px; right:70px; bottom:52px; height:210px; border-radius:32px; background:linear-gradient(180deg,#fff,#f4f0eb); box-shadow:0 26px 70px rgba(70,55,42,.13); transform:perspective(700px) rotateX(13deg); }
+    .d .doc { position:absolute; left:150px; top:110px; width:300px; height:210px; border-radius:12px; background:rgba(255,255,255,.92); border:1px solid rgba(230,226,216,.9); box-shadow:0 20px 44px rgba(70,55,42,.10); transform:rotate(-4deg); }
+    .d .doc:before { content:""; position:absolute; left:28px; top:32px; width:86px; height:10px; border-radius:999px; background:#d8d2c7; box-shadow:0 30px 0 #e8e3da, 0 60px 0 #e8e3da; }
+    .d .doc:after { content:""; position:absolute; left:28px; right:28px; bottom:40px; height:50px; border-left:2px solid #ddd7ce; border-bottom:2px solid #ddd7ce; background:linear-gradient(165deg,transparent 48%,var(--brand) 49% 54%,transparent 55%); opacity:.85; }
+    .d .quote { position:absolute; right:152px; top:142px; width:240px; height:170px; border-radius:14px; background:rgba(255,255,255,.88); border:1px solid rgba(230,226,216,.86); box-shadow:0 20px 48px rgba(70,55,42,.10); transform:rotate(2deg); }
+    .d .quote:before { content:""; position:absolute; left:24px; top:30px; width:86px; height:12px; border-radius:999px; background:#cfc8be; box-shadow:0 34px 0 #e5dfd6, 0 66px 0 #e5dfd6; }
+    .d .quote:after { content:""; position:absolute; right:24px; bottom:26px; width:70px; height:18px; border-radius:999px; background:#e8dcff; }
+
+    @media (max-width: 980px) { .variant { grid-template-columns:1fr; } .meta { max-width:760px; } h1 { font-size:38px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand"><img src="assets/app-icon.png" alt="" />오일딜러</div>
+      <a href="/">현재 블로그로 돌아가기 →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <span class="eyebrow">Hero direction test</span>
+      <h1>블로그 이미지 톤앤매너 시안</h1>
+      <p>SVG 도식은 제외하고, 같은 글 제목에 맞는 hero visual 방향을 여러 개로 벌려봤어. 지금은 실제 이미지 생성 전 단계라 CSS/HTML mock으로 톤을 보는 용도야.</p>
+    </section>
+
+    <section class="variant">
+      <div class="hero a" role="img" aria-label="이미지 없이 타이포와 여백 중심으로 구성한 아티클 헤더">
+        <div class="panel">
+          <div class="small">OilDealer market note</div>
+          <div class="title">유가 하락 뉴스가<br />발주 단가까지 오기 전에</div>
+          <div class="line"></div>
+          <div class="copy">이미지 대신 여백과 문장으로 신뢰감을 만드는 방향. 가장 안전하지만 썸네일 자산으로는 약함.</div>
+        </div>
+      </div>
+      <aside class="meta">
+        <h2>A. No-image editorial header</h2>
+        <p>이미지 퀄리티 리스크를 아예 제거하는 버전. 마음토스식 블로그 감도에는 제일 안전함.</p>
+        <div class="score"><span><b>장점:</b> 제일 깔끔함, 안 촌스러움</span><span><b>단점:</b> 블로그 목록/OG 이미지가 약함</span></div>
+      </aside>
+    </section>
+
+    <section class="variant">
+      <div class="hero b" role="img" aria-label="책상 위 시장 메모와 발주 견적서가 놓인 평면 editorial still-life">
+        <div class="surface"></div>
+        <div class="memo"><small>Market memo</small><strong>유가 하락 뉴스와<br />다음 발주 단가</strong><div class="chart"></div></div>
+        <div class="quote"><b>발주 견적서</b><span></span><span></span><span></span><span></span></div>
+        <div class="pen"></div>
+      </div>
+      <aside class="meta">
+        <h2>B. Flat paper still-life</h2>
+        <p>현재 적용한 방향을 더 납작하고 덜 glowy하게 정리한 버전. 시장 메모/견적서 느낌은 유지.</p>
+        <div class="score"><span><b>장점:</b> 주제 연결 명확, 과하지 않음</span><span><b>단점:</b> 아직 CSS 일러스트 느낌은 있음</span></div>
+      </aside>
+    </section>
+
+    <section class="variant">
+      <div class="hero c" role="img" aria-label="여러 시장 변수가 레이어처럼 겹친 추상형 이미지">
+        <div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div>
+        <div class="drop"><svg viewBox="0 0 520 230" fill="none"><path d="M20 46 C96 48 116 86 178 90 C254 94 286 40 356 66 C414 88 430 142 498 154" stroke="#721fe5" stroke-width="7" stroke-linecap="round"/><path d="M20 46 C96 48 116 86 178 90 C254 94 286 40 356 66 C414 88 430 142 498 154" stroke="#e4d7ff" stroke-width="22" stroke-linecap="round" opacity=".45"/></svg></div>
+        <div class="label"><small>Market layers</small>뉴스와 견적서 사이의 층</div>
+      </div>
+      <aside class="meta">
+        <h2>C. Abstract market layers</h2>
+        <p>구체적 사물 대신 “시차와 레이어”를 표현. 가장 세련될 수 있지만, 너무 SaaS 추상화로 보일 위험 있음.</p>
+        <div class="score"><span><b>장점:</b> 고급스럽고 범용성 좋음</span><span><b>단점:</b> 주유소 현장감은 약함</span></div>
+      </aside>
+    </section>
+
+    <section class="variant">
+      <div class="hero d" role="img" aria-label="부드러운 자연광이 들어오는 책상 위 문서와 견적서의 사진형 이미지 방향"></div>
+      <aside class="meta">
+        <h2>D. Photo-like editorial still-life</h2>
+        <p>최종적으로 이미지 생성/촬영을 한다면 이 방향. 문서, 계산기, 자연광, 책상 질감으로 더 실제감 있게.</p>
+        <div class="score"><span><b>장점:</b> 제일 덜 일러스트 같음</span><span><b>단점:</b> 생성 이미지 품질이 낮으면 바로 어색함</span></div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
