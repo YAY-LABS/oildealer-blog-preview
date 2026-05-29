@@ -1,0 +1,14 @@
+{
+  "name": "oildealer-blog-preview",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Temporary OilDealer blog preview for editorial/design review before CMS launch.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "preview": "vite preview --host 0.0.0.0",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
