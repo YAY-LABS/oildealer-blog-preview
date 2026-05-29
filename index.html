@@ -58,7 +58,14 @@
 
     main { min-height: 80vh; }
     .article-wrap { max-width: var(--max); margin: 0 auto; padding: 78px 24px 0; }
-    .article { max-width: var(--article); margin: 0 auto; }
+    .content-layout { display:grid; grid-template-columns: minmax(0, var(--article)) 240px; gap:64px; align-items:start; }
+    .article { max-width: var(--article); min-width:0; }
+    .toc { position: sticky; top: 116px; align-self:start; padding:22px 20px; border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:0 14px 42px rgba(17,24,39,.045); }
+    .toc-title { margin:0 0 14px; color:var(--ink); font-size:15px; font-weight:900; letter-spacing:-.03em; }
+    .toc nav { display:grid; gap:10px; }
+    .toc a { color:#666c78; text-decoration:none; font-size:14px; line-height:1.45; letter-spacing:-.02em; }
+    .toc a:hover { color:var(--brand); }
+    .toc .toc-cta { display:block; margin-top:18px; padding-top:16px; border-top:1px solid var(--line); color:var(--brand); font-weight:850; }
     .back { display:inline-flex; margin-bottom: 34px; color: var(--sub); text-decoration:none; font-size:15px; }
     .category { display:inline-flex; align-items:center; min-height:32px; padding:0 12px; border-radius:999px; background:var(--brand-soft); color:var(--brand); text-decoration:none; font-size:14px; font-weight:850; }
     h1 { margin: 18px 0 20px; color: var(--ink); font-size: clamp(40px, 5vw, 58px); line-height: 1.12; letter-spacing: -0.075em; font-weight: 900; }
@@ -82,7 +89,7 @@
 
     .body { font-size:18px; line-height:1.9; }
     .body p { margin: 20px 0; }
-    .body h2 { margin: 76px 0 22px; color:var(--ink); font-size:34px; line-height:1.28; letter-spacing:-.065em; font-weight:900; }
+    .body h2 { margin: 76px 0 22px; color:var(--ink); font-size:34px; line-height:1.28; letter-spacing:-.065em; font-weight:900; scroll-margin-top: 110px; }
     .body h3 { margin: 34px 0 12px; color:var(--ink); font-size:22px; line-height:1.35; letter-spacing:-.05em; }
     .body strong { color:var(--ink); font-weight:850; }
     .body ul, .body ol { padding-left: 1.25em; margin: 18px 0 24px; }
@@ -121,11 +128,19 @@
     .footer-inner { max-width:var(--max); margin:0 auto; padding:42px 24px 54px; color:var(--sub); font-size:14px; display:flex; align-items:flex-start; justify-content:space-between; gap:30px; }
     .footer-brand { color:var(--ink); font-weight:900; font-size:18px; margin-bottom:8px; }
 
+    @media (max-width: 1100px) {
+      .content-layout { display:block; }
+      .article { margin:0 auto; }
+      .toc { display:none; }
+    }
+
     @media (max-width: 860px) {
       .promo { display:none; }
       .nav, .login { display:none; }
       .gnb-inner { padding:13px 18px; }
       .article-wrap { padding: 48px 20px 0; }
+      .content-layout { display:block; }
+      .toc { display:none; }
       h1 { font-size: 38px; }
       .lead { font-size:18px; }
       .hero-image { margin:34px 0 44px; border-radius:18px; }
@@ -164,6 +179,7 @@
 
   <main id="content">
     <div class="article-wrap">
+      <div class="content-layout">
       <article class="article">
         <a class="back" href="#">← 블로그 목록</a>
         <header>
@@ -193,7 +209,7 @@
 
           <p>그래서 하락장에서는 질문을 바꿔야 합니다. “유가가 내렸으니 지금 싸게 살 수 있나?”보다 먼저 봐야 할 질문은 이것입니다. <strong>이번 하락이 내 다음 발주 단가까지 내려올 하락인가, 아니면 뉴스에서만 보이는 하락인가.</strong></p>
 
-          <h2>뉴스 속 유가는 원유, 발주 단가는 제품입니다</h2>
+          <h2 id="crude-to-product">뉴스 속 유가는 원유, 발주 단가는 제품입니다</h2>
           <p>뉴스에서 자주 보는 유가는 원유 가격입니다. 주유소가 실제로 사는 것은 휘발유와 경유입니다. 둘 사이에는 정제 과정과 제품별 수급이 있습니다. 원유가 내려도 경유 수급이 타이트하면 경유 단가는 덜 내려올 수 있고, 환율이 오르면 원유 하락분이 원화 기준에서 줄어들 수 있습니다.</p>
 
           <table class="simple-table">
@@ -209,13 +225,13 @@
             </tbody>
           </table>
 
-          <h2>하락 뉴스가 내 단가까지 안 내려오는 경우</h2>
+          <h2 id="why-lag">하락 뉴스가 내 단가까지 안 내려오는 경우</h2>
           <p>첫째, 환율이 하락분을 지울 수 있습니다. 국제유가가 달러 기준으로 내려도 원화가 약하면 국내 체감 원가는 덜 내려옵니다.</p>
           <p>둘째, 원유와 제품은 다르게 움직입니다. 특히 경유는 산업 수요, 계절 수요, 재고 수준에 따라 휘발유와 다른 가격 흐름을 보일 수 있습니다.</p>
           <p>셋째, 공급가에는 적용 시차가 있습니다. 오늘 뉴스가 내일 견적서에 그대로 찍히지 않습니다. 거래처마다 반영 방식도 다릅니다.</p>
           <p>넷째, 기존 재고가 손익을 먼저 만집니다. 새 단가가 내려와도 비싼 재고를 들고 있으면 당장 체감 마진은 달라지지 않습니다.</p>
 
-          <h2>같은 하락장에서도 재고에 따라 판단이 갈립니다</h2>
+          <h2 id="inventory-branch">같은 하락장에서도 재고에 따라 판단이 갈립니다</h2>
           <div class="memo-box">
             <h3>발주 판단은 유가 방향보다 재고 위치가 먼저입니다</h3>
             <div class="grid">
@@ -230,12 +246,12 @@
             </div>
           </div>
 
-          <h2>오를 때는 빠르고 내릴 때는 느리게 느껴지는 이유</h2>
+          <h2 id="rockets-feathers">오를 때는 빠르고 내릴 때는 느리게 느껴지는 이유</h2>
           <p>주유소 사장님들이 체감하는 가격은 시장 가격 하나로 결정되지 않습니다. 공급가, 거래 조건, 주변 판가, 재고 평균단가가 함께 움직입니다. 오를 때는 손실 회피 때문에 시장이 빨리 반응하고, 내릴 때는 비싼 재고를 들고 있는 사업자가 많아 속도가 느려집니다.</p>
 
           <p>그래서 하락장에서 필요한 건 예측이 아닙니다. 순서 확인입니다. 국제유가가 내려갔는지, 환율이 같이 도와주는지, 국내 공급가에 들어왔는지, 내 거래처 견적에 반영됐는지, 내 재고 평균단가와 맞는지를 차례로 봐야 합니다.</p>
 
-          <h2>이번 주에는 가격보다 순서를 보세요</h2>
+          <h2 id="weekly-actions">이번 주에는 가격보다 순서를 보세요</h2>
           <ul>
             <li>국제유가 하락 폭이 하루짜리인지, 며칠 이어지는 흐름인지 봅니다.</li>
             <li>환율이 하락분을 살려주는지, 지우고 있는지 봅니다.</li>
@@ -250,7 +266,7 @@
             <a class="button" href="#">무료 견적 비교하기</a>
           </section>
 
-          <section class="references">
+          <section class="references" id="references">
             <h2>참고 자료</h2>
             <ol class="ref-list">
               <li><span class="ref-no">1</span><div><a href="https://www.opinet.co.kr/" target="_blank" rel="noreferrer">오피넷</a><p>국내 석유제품 가격과 주유소 가격 확인 자료.</p></div></li>
@@ -259,7 +275,7 @@
             </ol>
           </section>
 
-          <section class="faq">
+          <section class="faq" id="faq">
             <h2>자주 묻는 질문</h2>
             <details>
               <summary>국제유가가 내리면 국내 주유소 가격도 바로 내려가나요?</summary>
@@ -276,6 +292,20 @@
           </section>
         </div>
       </article>
+      <aside class="toc" aria-label="목차">
+        <p class="toc-title">목차</p>
+        <nav>
+          <a href="#crude-to-product">원유와 제품 가격</a>
+          <a href="#why-lag">단가까지 안 내려오는 경우</a>
+          <a href="#inventory-branch">재고에 따른 판단</a>
+          <a href="#rockets-feathers">오를 때와 내릴 때</a>
+          <a href="#weekly-actions">이번 주 확인 순서</a>
+          <a href="#references">참고 자료</a>
+          <a href="#faq">자주 묻는 질문</a>
+        </nav>
+        <a class="toc-cta" href="#cta">견적 비교 보기 →</a>
+      </aside>
+      </div>
     </div>
   </main>
 
