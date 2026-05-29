@@ -3,191 +3,303 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>국제유가 내려도 발주 단가가 안 내려가는 이유 | 오일딜러</title>
-  <meta name="description" content="국제유가 하락 뉴스와 주유소 실제 발주 단가 사이의 시차를 환율, 정제마진, 공급가, 재고 평균단가 관점에서 정리했습니다." />
+  <title>유가 하락 뉴스가 내 발주 단가까지 오기 전에 생기는 일 | 오일딜러</title>
+  <meta name="description" content="국제유가가 내렸는데도 주유소 발주 단가가 바로 내려가지 않는 이유를 원유, 환율, 정제마진, 국내 공급가, 재고 평균단가의 순서로 정리했습니다." />
+  <meta property="og:title" content="유가 하락 뉴스가 내 발주 단가까지 오기 전에 생기는 일 | 오일딜러" />
+  <meta property="og:description" content="뉴스 속 유가와 사장님 발주 단가 사이에는 순서와 시차가 있습니다." />
   <style>
     * { box-sizing: border-box; }
     :root {
-      --oil-purple: #721fe5;
-      --oil-purple-dark: #5414c8;
-      --oil-purple-soft: #f4efff;
-      --oil-purple-line: #e4d7ff;
-      --oil-yellow: #fcc64d;
-      --oil-blue: #3776ff;
-      --oil-green: #18b47b;
-      --oil-red: #ff5e55;
-      --text: #111827;
-      --sub: #6b7280;
-      --muted: #9ca3af;
-      --line: #eceef3;
-      --page: #f7f7fb;
-      --card: #ffffff;
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 18px;
-      --radius-xl: 28px;
-      --container: 1160px;
-      --article: 760px;
-      --shadow-card: 0 8px 28px rgba(17, 24, 39, .06);
-      --shadow-purple: 0 24px 60px rgba(114, 31, 229, .20);
-      --font: Pretendard, "Pretendard Variable", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto, Arial, sans-serif;
+      --brand: #721fe5;
+      --brand-dark: #5414c8;
+      --brand-soft: #f5f0ff;
+      --brand-line: #e4d7ff;
+      --ink: #15151a;
+      --text: #30313a;
+      --sub: #737782;
+      --muted: #9aa0aa;
+      --line: #e8e9ee;
+      --soft: #f7f7f9;
+      --paper: #ffffff;
+      --max: 1160px;
+      --article: 820px;
+      --font: Pretendard, "Pretendard Variable", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
     }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: var(--text);
-      background: var(--page);
       font-family: var(--font);
-      font-size: 17px;
-      line-height: 1.7;
+      color: var(--text);
+      background: #fff;
       word-break: keep-all;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
+      -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; }
-    .promo {
-      background: linear-gradient(90deg, var(--oil-purple), #8b4dff);
-      color: #fff;
-      font-size: 14px;
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { left:20px; top:20px; width:auto; height:auto; background:#fff; padding:10px 14px; border:1px solid var(--line); border-radius:10px; z-index:100; }
+
+    .promo { background: var(--brand); color: #fff; font-size: 14px; }
+    .promo-inner { max-width: var(--max); margin: 0 auto; padding: 10px 24px; display:flex; align-items:center; justify-content:center; gap:10px; }
+    .promo b { font-weight: 850; }
+    .promo a { color: #fff; text-decoration: none; font-weight: 800; }
+
+    .gnb { position: sticky; top:0; z-index:20; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .gnb-inner { max-width: var(--max); margin:0 auto; padding: 16px 24px; display:flex; align-items:center; justify-content:space-between; gap:26px; }
+    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:900; font-size:20px; letter-spacing:-.06em; }
+    .logo img { width:32px; height:32px; border-radius:9px; }
+    .nav { display:flex; align-items:center; gap:28px; font-size:15px; color:#555a66; }
+    .nav a { text-decoration:none; padding:6px 0; }
+    .nav a.active { color: var(--brand); border-bottom: 2px solid var(--brand); font-weight:800; }
+    .actions { display:flex; align-items:center; gap:18px; font-size:15px; }
+    .login { color:#555a66; text-decoration:none; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:0 18px; border-radius:11px; background: var(--brand); color:#fff; text-decoration:none; font-weight:850; border:1px solid var(--brand); }
+    .button.secondary { background:#fff; color:var(--brand); border-color:var(--brand-line); }
+
+    main { min-height: 80vh; }
+    .article-wrap { max-width: var(--max); margin: 0 auto; padding: 78px 24px 0; }
+    .article { max-width: var(--article); margin: 0 auto; }
+    .back { display:inline-flex; margin-bottom: 34px; color: var(--sub); text-decoration:none; font-size:15px; }
+    .category { display:inline-flex; align-items:center; min-height:32px; padding:0 12px; border-radius:999px; background:var(--brand-soft); color:var(--brand); text-decoration:none; font-size:14px; font-weight:850; }
+    h1 { margin: 18px 0 20px; color: var(--ink); font-size: clamp(40px, 5vw, 58px); line-height: 1.12; letter-spacing: -0.075em; font-weight: 900; }
+    .lead { margin: 0; max-width: 740px; color:#565b66; font-size:20px; line-height:1.72; letter-spacing:-.035em; }
+    .meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top: 24px; color: var(--sub); font-size:14px; }
+    .dotsep::before { content:"·"; margin-right:8px; color:#b1b5bd; }
+
+    .hero-image { margin: 46px 0 52px; height: 430px; border-radius: 24px; overflow:hidden; background:
+      radial-gradient(circle at 78% 22%, rgba(255,255,255,.34), transparent 23%),
+      linear-gradient(135deg, #ede4ff 0%, #faf8ff 48%, #ffffff 100%);
+      border:1px solid var(--brand-line); position:relative; }
+    .hero-image::before { content:""; position:absolute; inset:38px 54px; border-radius:28px; background:#fff; border:1px solid #eee8ff; box-shadow:0 24px 60px rgba(114,31,229,.13); }
+    .hero-card { position:absolute; left:88px; right:88px; top:76px; bottom:76px; display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:center; }
+    .hero-title { color:var(--ink); }
+    .hero-title small { display:block; color:var(--brand); font-size:14px; font-weight:900; margin-bottom:12px; }
+    .hero-title strong { display:block; font-size:34px; line-height:1.18; letter-spacing:-.07em; }
+    .flow { display:grid; gap:10px; }
+    .flow div { background:var(--brand-soft); border:1px solid var(--brand-line); color:#3a246a; padding:12px 14px; border-radius:14px; font-size:14px; font-weight:800; }
+    .flow span { color:var(--sub); font-weight:700; margin-left:8px; }
+
+    .callout { margin: 0 0 34px; padding: 24px 28px; background:#faf9fc; border-left: 4px solid var(--brand); border-radius:16px; color:#383b45; }
+    .callout b { display:block; color:var(--brand); margin-bottom:8px; font-size:15px; }
+    .callout p { margin:0; font-size:17px; line-height:1.82; }
+
+    .body { font-size:18px; line-height:1.9; }
+    .body p { margin: 20px 0; }
+    .body h2 { margin: 76px 0 22px; color:var(--ink); font-size:34px; line-height:1.28; letter-spacing:-.065em; font-weight:900; }
+    .body h3 { margin: 34px 0 12px; color:var(--ink); font-size:22px; line-height:1.35; letter-spacing:-.05em; }
+    .body strong { color:var(--ink); font-weight:850; }
+    .body ul, .body ol { padding-left: 1.25em; margin: 18px 0 24px; }
+    .body li { margin: 8px 0; }
+
+    .simple-table { width:100%; border-collapse:separate; border-spacing:0; margin:30px 0; border:1px solid var(--line); border-radius:16px; overflow:hidden; font-size:15px; line-height:1.6; }
+    .simple-table th { text-align:left; padding:15px 16px; background:#f7f3ff; color:#44217c; border-bottom:1px solid var(--brand-line); }
+    .simple-table td { padding:15px 16px; border-bottom:1px solid var(--line); vertical-align:top; }
+    .simple-table tr:last-child td { border-bottom:none; }
+
+    .memo-box { margin: 30px 0; padding: 24px 26px; border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:0 14px 42px rgba(17,24,39,.05); }
+    .memo-box h3 { margin-top:0; }
+    .memo-box .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
+    .memo { padding:18px; border-radius:16px; background:var(--soft); }
+    .memo b { display:block; color:var(--ink); margin-bottom:8px; }
+
+    .cta { margin: 70px 0; padding: 52px 34px; text-align:center; border-radius:26px; background: linear-gradient(115deg, var(--brand), #9b62ff); color:#fff; }
+    .cta h2 { margin:0 0 12px; color:#fff; font-size:31px; }
+    .cta p { margin:0 auto 26px; max-width:620px; color:rgba(255,255,255,.88); font-size:17px; line-height:1.75; }
+    .cta .button { background:#fff; color:var(--brand); border-color:#fff; }
+
+    .references, .faq { margin-top: 78px; padding-top: 46px; border-top:1px solid var(--line); }
+    .references h2, .faq h2 { margin:0 0 24px; font-size:30px; color:var(--ink); letter-spacing:-.055em; }
+    .ref-list { list-style:none; padding:0; margin:0; display:grid; gap:18px; }
+    .ref-list li { display:grid; grid-template-columns:32px 1fr; gap:14px; margin:0; }
+    .ref-no { width:32px; height:32px; border-radius:10px; display:grid; place-items:center; background:var(--brand-soft); color:var(--brand); font-weight:900; font-size:14px; }
+    .ref-list a { color:var(--ink); font-weight:800; text-decoration:none; }
+    .ref-list p { margin:4px 0 0; color:var(--sub); font-size:15px; line-height:1.6; }
+    details { border:1px solid var(--line); border-radius:15px; padding:18px 20px; margin:12px 0; background:#fff; }
+    summary { cursor:pointer; font-weight:850; color:var(--ink); }
+    details p { margin:14px 0 0; color:#555b66; font-size:16px; line-height:1.75; }
+
+    footer { margin-top: 110px; border-top:1px solid var(--line); background:#fff; }
+    .footer-inner { max-width:var(--max); margin:0 auto; padding:42px 24px 54px; color:var(--sub); font-size:14px; display:flex; align-items:flex-start; justify-content:space-between; gap:30px; }
+    .footer-brand { color:var(--ink); font-weight:900; font-size:18px; margin-bottom:8px; }
+
+    @media (max-width: 860px) {
+      .promo { display:none; }
+      .nav, .login { display:none; }
+      .gnb-inner { padding:13px 18px; }
+      .article-wrap { padding: 48px 20px 0; }
+      h1 { font-size: 38px; }
+      .lead { font-size:18px; }
+      .hero-image { height:auto; min-height:360px; margin:34px 0 44px; }
+      .hero-image::before { inset:24px; }
+      .hero-card { left:42px; right:42px; top:52px; bottom:52px; grid-template-columns:1fr; }
+      .hero-title strong { font-size:29px; }
+      .memo-box .grid { grid-template-columns:1fr; }
+      .body { font-size:17px; line-height:1.85; }
+      .body h2 { font-size:28px; margin-top:60px; }
+      .simple-table { display:block; overflow-x:auto; white-space:nowrap; }
+      .footer-inner { display:block; }
     }
-    .promo-inner { max-width: var(--container); margin: 0 auto; padding: 9px 22px; display:flex; justify-content:space-between; gap:16px; align-items:center; }
-    .promo a { color: #fff; font-weight: 850; text-decoration: none; }
-    header.gnb { position: sticky; top:0; z-index:30; background: rgba(255,255,255,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
-    .gnb-inner { max-width: var(--container); margin:0 auto; padding: 14px 22px; display:flex; justify-content:space-between; align-items:center; gap:18px; }
-    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight: 900; font-size:20px; letter-spacing:-.055em; }
-    .logo img { width:34px; height:34px; border-radius:10px; box-shadow: 0 6px 18px rgba(114,31,229,.25); }
-    .nav { display:flex; gap:24px; color:#5f6572; font-size:14px; }
-    .nav a { text-decoration:none; }
-    .nav a.active { color: var(--oil-purple); font-weight:850; }
-    .header-cta { display:inline-flex; align-items:center; justify-content:center; height:42px; padding:0 16px; border-radius:14px; background:var(--oil-purple); color:#fff; text-decoration:none; font-size:14px; font-weight:850; box-shadow: 0 8px 22px rgba(114,31,229,.20); }
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 22px; }
-    .back { display:inline-flex; margin: 38px 0 20px; color: var(--sub); text-decoration:none; font-size:14px; }
-    .hero-panel { display:grid; grid-template-columns: minmax(0, 1fr) 340px; gap:36px; align-items:center; margin-bottom: 34px; }
-    .category { display:inline-flex; align-items:center; gap:7px; color:var(--oil-purple); background:var(--oil-purple-soft); border:1px solid var(--oil-purple-line); border-radius:999px; padding:7px 12px; font-weight:850; font-size:14px; text-decoration:none; }
-    h1 { font-size: clamp(42px, 5vw, 64px); line-height: 1.08; letter-spacing:-.075em; margin: 18px 0 18px; color:#0b0f19; }
-    .summary { max-width: 720px; font-size: 19px; color: #4b5563; margin: 0 0 18px; }
-    .meta { display:flex; flex-wrap:wrap; gap:8px 12px; color:var(--sub); font-size:14px; align-items:center; }
-    .app-hero {
-      min-height: 430px;
-      border-radius: 34px;
-      background: linear-gradient(180deg, #7b2aff 0%, #5f19d9 100%);
-      padding: 22px 22px 0;
-      color:#fff;
-      overflow:hidden;
-      box-shadow: var(--shadow-purple);
-      position:relative;
-    }
-    .app-hero::before { content:""; position:absolute; inset:-70px -70px auto auto; width:220px; height:220px; border-radius:50%; background: rgba(255,255,255,.10); }
-    .app-copy { text-align:center; position:relative; z-index:1; }
-    .app-copy .brand-word { font-size:34px; font-weight:950; letter-spacing:-.07em; line-height:1; margin-top:2px; }
-    .app-copy p { margin: 8px 0 18px; font-size:13px; opacity:.88; line-height:1.45; }
-    .phone { width: 230px; margin:0 auto; padding:8px; border-radius:36px; background:#111; box-shadow: 0 22px 50px rgba(0,0,0,.35); }
-    .screen { min-height: 310px; border-radius:29px; background:#f7f7fb; color:var(--text); padding:15px 12px 62px; position:relative; text-align:left; }
-    .appbar { height:34px; display:flex; align-items:center; justify-content:space-between; color:var(--oil-purple); font-size:13px; font-weight:900; }
-    .dot { width:22px; height:22px; border-radius:8px; background:var(--oil-purple-soft); display:grid; place-items:center; color:var(--oil-purple); }
-    .app-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:13px; margin-top:10px; box-shadow: 0 6px 20px rgba(17,24,39,.05); }
-    .app-label { margin:0; font-size:11px; color:var(--sub); }
-    .app-value { display:block; margin-top:4px; font-size:26px; font-weight:950; letter-spacing:-.055em; }
-    .app-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
-    .app-chip { font-size:10px; border-radius:999px; padding:4px 7px; background:var(--oil-purple-soft); color:var(--oil-purple); font-weight:800; }
-    .mini-list { display:grid; gap:7px; margin-top:10px; }
-    .mini-row { display:flex; align-items:center; justify-content:space-between; background:#fff; border:1px solid var(--line); border-radius:13px; padding:9px 10px; font-size:11px; }
-    .mini-row b { font-size:12px; }
-    .mini-row span:last-child { color:var(--oil-purple); font-weight:900; }
-    .bottom-nav { position:absolute; left:12px; right:12px; bottom:10px; display:grid; grid-template-columns:repeat(4,1fr); background:#fff; border:1px solid var(--line); border-radius:17px; padding:9px 0; box-shadow: 0 6px 18px rgba(17,24,39,.05); }
-    .bottom-nav span { text-align:center; font-size:10px; color:#a1a7b3; font-weight:700; }
-    .bottom-nav .active { color:var(--oil-purple); }
-    .article-grid { display:grid; grid-template-columns: minmax(0, var(--article)) 260px; gap: 66px; align-items:start; }
-    article { max-width: var(--article); background:#fff; border:1px solid var(--line); border-radius:28px; padding: 36px 44px 44px; box-shadow: var(--shadow-card); }
-    .answer-box { margin: 0 0 30px; padding: 20px 22px; border-radius: 18px; background: var(--oil-purple-soft); border:1px solid var(--oil-purple-line); }
-    .answer-box .label { display:inline-flex; align-items:center; gap:6px; color:var(--oil-purple); font-weight:950; margin-bottom:8px; }
-    .article-body h2 { font-size: 29px; line-height:1.32; letter-spacing:-.06em; margin: 54px 0 18px; color:#0b0f19; }
-    .article-body h3 { font-size:21px; letter-spacing:-.04em; margin:28px 0 10px; }
-    .article-body p { margin:16px 0; }
-    .avoid { background:#fafbff; border:1px solid var(--line); border-radius:18px; padding:20px; margin:22px 0; }
-    ul,ol { padding-left:1.35em; } li { margin:8px 0; }
-    .data-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border:1px solid var(--line); border-radius:18px; margin:26px 0; font-size:14px; }
-    .data-table th { background:#f6f3ff; color:#3f217d; text-align:left; padding:13px; }
-    .data-table td { padding:13px; border-top:1px solid var(--line); vertical-align:top; background:#fff; }
-    .decision-visual { margin: 28px 0; padding: 24px; border-radius:24px; background: linear-gradient(135deg, #fbfaff, #f4efff); border:1px solid var(--oil-purple-line); }
-    .split { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .case { background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px; box-shadow:0 8px 24px rgba(17,24,39,.04); }
-    .tag { display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:12px; background:var(--oil-purple); color:#fff; margin-right:8px; font-weight:950; }
-    .checklist { list-style:none; padding:0; }
-    .checklist li { border:1px solid var(--line); border-radius:15px; padding:13px 14px 13px 42px; position:relative; background:#fff; }
-    .checklist li::before { content:'✓'; position:absolute; left:14px; top:12px; color:var(--oil-purple); font-weight:950; }
-    .cta-banner { margin:44px 0; border-radius:24px; padding:30px; background: linear-gradient(135deg, var(--oil-purple), #8b4dff); color:#fff; text-align:center; box-shadow:var(--shadow-purple); }
-    .cta-banner h3 { margin:0 0 8px; font-size:24px; letter-spacing:-.05em; }
-    .cta-banner p { opacity:.9; }
-    .cta-banner button { border:0; background:#fff; color:var(--oil-purple); border-radius:14px; height:48px; padding:0 18px; font-weight:950; cursor:pointer; }
-    .references, .faq, .editor-note { margin:46px 0; }
-    .ref-list { list-style:none; padding:0; }
-    .ref-list li { border:1px solid var(--line); border-radius:15px; padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:14px; background:#fff; }
-    .badge { font-size:12px; border-radius:999px; background:var(--oil-purple-soft); color:var(--oil-purple); padding:4px 8px; font-weight:850; white-space:nowrap; }
-    details { border-top:1px solid var(--line); padding:18px 0; }
-    details:last-child { border-bottom:1px solid var(--line); }
-    summary { cursor:pointer; font-weight:850; }
-    .editor-note { background:#fafbff; border:1px solid var(--line); border-radius:18px; padding:18px; color:#4b5563; font-size:15px; }
-    .sidebar { position:sticky; top:92px; align-self:start; }
-    .toc-card { border-left:2px solid #eceef3; padding-left:18px; color:var(--sub); font-size:14px; }
-    .toc-card h3 { margin:0 0 12px; color:#374151; font-size:15px; }
-    .toc-card a { display:block; text-decoration:none; padding:7px 0; }
-    .toc-card a:hover { color:var(--oil-purple); }
-    .side-section { margin-top:24px; background:#fff; border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow-card); font-size:14px; color:#4b5563; }
-    .side-section h3 { margin:0 0 10px; font-size:15px; color:#111827; }
-    .feature-card { background:linear-gradient(180deg, var(--oil-purple), #5f19d9); color:#fff; border:0; }
-    .feature-card p { opacity:.9; margin:0; }
-    .app-screens { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:12px; }
-    .app-screens img { width:100%; border-radius:10px; border:1px solid rgba(255,255,255,.25); }
-    footer { margin-top:70px; background:#111827; color:#cfd5df; padding:40px 0; font-size:14px; }
-    .toast { position:fixed; left:50%; bottom:20px; transform:translateX(-50%) translateY(20px); opacity:0; transition:.22s; background:#111827; color:#fff; border-radius:999px; padding:12px 16px; box-shadow:var(--shadow-card); }
-    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
-    @media(max-width:1050px){ .hero-panel,.article-grid{grid-template-columns:1fr;} .app-hero{max-width:420px;} .sidebar{position:static;} .toc-card{display:none;} }
-    @media(max-width:680px){ .container{padding:0 16px;} .nav{display:none;} article{padding:28px 20px;} h1{font-size:38px;} .split{grid-template-columns:1fr;} .data-table{display:block; overflow-x:auto; white-space:nowrap;} .promo-inner{padding-inline:16px;} }
   </style>
 </head>
 <body>
-  <div class="promo"><div class="promo-inner"><span>주유소 운영, 이제 오일딜러 하나로 충분합니다.</span><a href="#cta">무료 견적 비교 →</a></div></div>
-  <header class="gnb"><div class="gnb-inner"><a class="logo" href="#"><img src="assets/app-icon.png" alt="오일딜러 앱 아이콘"/>오일딜러</a><nav class="nav"><a href="#">서비스 소개</a><a href="#">시장</a><a class="active" href="#">블로그</a><a href="#">관리</a><a href="#">문의</a></nav><a class="header-cta" href="#cta">무료 견적 비교</a></div></header>
-  <main class="container">
-    <a class="back" href="#">← 블로그 목록</a>
-    <section class="hero-panel">
-      <div>
-        <a class="category" href="#">● 시장 정보와 전망</a>
-        <h1>국제유가 내려도 발주 단가가 안 내려가는 이유</h1>
-        <p class="summary">국제유가 하락 뉴스와 주유소 실제 발주 단가 사이의 시차를 환율, 정제마진, 공급가, 재고 평균단가 관점에서 정리했습니다.</p>
-        <div class="meta"><strong>오일딜러 유가·마진 리서치</strong><span>·</span><time>2026년 5월 29일</time><span>·</span><span>약 7분</span></div>
-      </div>
-      <aside class="app-hero" aria-label="오일딜러 앱 스타일 히어로">
-        <div class="app-copy"><div class="brand-word">오일딜러</div><p>값으로 사던 기름,<br/>이젠 데이터로 판단하세요</p></div>
-        <div class="phone"><div class="screen"><div class="appbar"><span>오일딜러</span><span class="dot">↗</span></div><div class="app-card"><p class="app-label">오늘의 발주 판단</p><strong class="app-value">대기</strong><div class="app-chips"><span class="app-chip">국제유가 하락</span><span class="app-chip">재고 평균단가 확인</span></div></div><div class="mini-list"><div class="mini-row"><b>국제유가</b><span>선행 신호</span></div><div class="mini-row"><b>환율·정제마진</b><span>중간 변수</span></div><div class="mini-row"><b>다음 견적</b><span>실제 조건</span></div></div><nav class="bottom-nav"><span class="active">홈</span><span>주문</span><span>시장</span><span>관리</span></nav></div></div>
-      </aside>
-    </section>
+  <a class="skip" href="#content">본문으로 건너뛰기</a>
+  <div class="promo">
+    <div class="promo-inner">
+      <span><b>오일딜러 시장 메모</b> · 주유소 발주와 마진 판단에 필요한 유가 흐름을 정리합니다.</span>
+      <a href="#cta">견적 비교 보기 →</a>
+    </div>
+  </div>
 
-    <div class="article-grid">
-      <article>
-        <div class="answer-box"><span class="label">● 핵심 답변</span>사장님 발주 단가는 국제유가가 아니라 ‘원유 → 제품 → 국내 공급가 → 대리점 조건 → 내 재고 평균단가’를 지나온 결과입니다. 그래서 하락 뉴스보다 늦고, 때로는 다르게 움직일 수 있습니다.</div>
-        <div class="article-body">
-          <p>사장님, 뉴스에서는 국제유가가 내렸다고 하는데 거래처 단가는 별로 안 내려온 것처럼 느껴질 때가 있습니다. 이걸 단순히 “반영이 늦다”로만 보면 다음 판단이 흐려집니다. 사장님이 사는 건 원유가 아니라, 환율·정제마진·국내 공급가·대리점 조건·내 재고 평균단가를 통과한 휘발유와 경유입니다.</p>
-          <p>그래서 국제유가 하락 뉴스가 나왔을 때 중요한 질문은 “오늘 판가를 내릴까?”가 아닙니다. 더 정확한 질문은 <strong>“이번 하락이 내 다음 발주 단가까지 내려올 하락인가, 아니면 뉴스에서만 보이는 하락인가?”</strong>입니다.</p>
-          <h2 id="avoid">1. 이 글에서 일부러 안 할 뻔한 말</h2><div class="avoid"><strong>뻔한 말부터 지우겠습니다.</strong><ul><li>“국제유가를 확인하세요” — 사장님들은 이미 봅니다.</li><li>“발주 전 가격을 비교하세요” — 이것도 이미 아십니다.</li><li>“유가가 내리면 판가도 내려야 합니다” — 실제 운영에서는 너무 단순합니다.</li></ul></div><p>이 글에서 볼 것은 하나입니다. <strong>국제유가 하락이 사장님 손익에 들어오기 전, 어디서 늦어지고 어디서 지워지는가</strong>입니다.</p>
-          <h2 id="product">2. 뉴스 속 유가는 원유, 사장님 발주는 제품입니다</h2><p>국제유가 뉴스는 보통 원유 가격 흐름을 말합니다. 그런데 주유소가 실제로 발주하는 것은 정제된 제품입니다. 원유가 내려도 휘발유와 경유 제품 가격은 유종별 수급, 정제마진, 국내 공급가 정책에 따라 다르게 움직일 수 있습니다.</p>
-          <table class="data-table"><thead><tr><th>단계</th><th>뉴스에서 보이는 것</th><th>사장님 손익에 들어오는 것</th><th>놓치기 쉬운 함정</th></tr></thead><tbody><tr><td>국제유가</td><td>원유 방향</td><td>아직 직접 단가 아님</td><td>원유 하락 = 제품 하락으로 단정</td></tr><tr><td>환율</td><td>원화 환산 원가</td><td>수입 원가 체감</td><td>유가 하락분을 환율이 지울 수 있음</td></tr><tr><td>정제마진</td><td>제품별 수급</td><td>휘발유/경유 차이</td><td>유종별 움직임을 하나로 봄</td></tr><tr><td>국내 공급가</td><td>실제 발주 전 신호</td><td>거래처 조건의 기준</td><td>고시/적용 시차 무시</td></tr><tr><td>재고 평균단가</td><td>현재 손익의 출발점</td><td>오늘 팔 때 남는 마진</td><td>새 단가보다 기존 재고가 먼저 손익을 결정</td></tr></tbody></table>
-          <h2 id="lag">3. 하락 뉴스가 ‘내 단가’까지 내려오지 않는 4가지 경우</h2><ol><li><strong>환율이 하락 효과를 일부 지우는 경우</strong> — 달러 기준 원유가 내려도 원화 기준 수입 원가가 똑같이 내려오지 않을 수 있습니다.</li><li><strong>제품별 수급이 다르게 움직이는 경우</strong> — 경유 수급이 타이트한 주간이면 원유 하락과 경유 단가 하락이 다르게 느껴질 수 있습니다.</li><li><strong>공급가와 대리점 조건의 반영 시차</strong> — 뉴스는 오늘 보이지만 거래 조건은 고시·계약·배송·물량 조건을 거쳐 들어옵니다.</li><li><strong>내 재고 평균단가가 아직 높은 경우</strong> — 다음 발주 단가가 내려갈 가능성이 있어도 오늘 팔고 있는 기름은 이미 높은 단가로 들어온 재고일 수 있습니다.</li></ol>
-          <h2 id="branch">4. 하락장에서 사장님 판단은 두 갈래로 나뉩니다</h2><p>여기서 경험 많은 사장님이 실제로 헷갈리는 지점은 이겁니다. <strong>같은 국제유가 하락 뉴스라도, 재고 2일치 사장님과 재고 9일치 사장님의 답은 달라야 합니다.</strong></p><section class="decision-visual"><h3>같은 하락 뉴스, 다른 판단</h3><div class="split"><div class="case"><h3><span class="tag">A</span>재고가 적고 발주가 가까움</h3><p>곧 새 단가로 발주할 수 있으므로 하락 뉴스가 의미가 있습니다. 다음 발주 조건이 실제로 내려오는지 확인하는 게 먼저입니다.</p><ul><li>다음 발주가 1~3일 안인가?</li><li>공급가 안내가 바뀌었나?</li><li>같은 물량·배송 조건의 견적도 내려왔나?</li></ul></div><div class="case"><h3><span class="tag">B</span>재고가 많고 평균단가가 높음</h3><p>하락 뉴스가 오히려 부담입니다. 주변 판가는 내려갈 수 있는데, 내 창고에는 높은 단가의 재고가 남아 있기 때문입니다.</p><ul><li>현재 재고가 며칠치인가?</li><li>판가를 낮추면 기존 재고에서 얼마가 줄어드나?</li><li>낮은 단가 발주 전까지 방어 마진은 얼마인가?</li></ul></div></div></section>
-          <h2 id="rockets">5. ‘오를 때 빠르고 내릴 때 느린’ 체감은 왜 생길까</h2><p>주유소 현장에서는 가격이 오를 때는 빨리 오르고, 내릴 때는 천천히 내려오는 것처럼 느껴질 때가 있습니다. 경제학에서는 이런 현상을 비대칭 가격 조정, 흔히 <strong>rockets and feathers</strong>라는 말로 설명합니다.</p><ul><li>상승장에서는 새 발주 단가가 먼저 무서워집니다.</li><li>하락장에서는 기존 재고 평균단가가 먼저 무거워집니다.</li><li>그래서 상승장과 하락장의 체크 순서가 달라야 합니다.</li></ul>
-          <h2 id="order">6. 이번 주 사장님이 볼 것은 ‘가격’이 아니라 순서입니다</h2><ul class="checklist"><li>국제유가 방향을 봅니다. 단, 원유 가격이라는 점을 표시합니다.</li><li>환율이 같은 방향인지 반대 방향인지 봅니다.</li><li>휘발유와 경유 중 어느 유종이 실제로 더 움직이는지 나눠 봅니다.</li><li>거래처 공급가 안내가 바뀌었는지 확인합니다.</li><li>내 재고 보유일수와 평균단가를 적습니다.</li><li>다음 발주 물량·배송·결제 조건을 동일하게 맞춰 견적을 비교합니다.</li><li>그 다음에 판가를 조정할지, 재고 소진을 기다릴지 결정합니다.</li></ul>
-          <section class="cta-banner" id="cta"><h3>뉴스가 아니라 내 발주 조건까지 하락이 내려왔는지 확인하세요</h3><p>다음 발주 전 같은 물량·배송·결제 조건으로 견적을 비교해 보면, 뉴스와 실제 단가 사이의 간격을 더 빨리 볼 수 있습니다.</p><button onclick="toast()">같은 조건으로 견적 비교하기</button></section>
-          <h2>마무리: 이번 주 사장님이 할 일</h2><p>이번 주에는 국제유가 하락 뉴스만 보고 판가를 먼저 움직이지 마세요. 먼저 내 재고 보유일수와 평균단가를 적고, 다음 발주 물량·배송·결제 조건을 동일하게 맞춰 견적을 비교해 보세요. 그래서 이번 주 사장님이 해야 할 일은 <strong>뉴스가 아니라 내 발주 조건까지 하락이 내려왔는지 확인하는 것</strong>입니다.</p>
+  <header class="gnb">
+    <div class="gnb-inner">
+      <a class="logo" href="#"><img src="/assets/app-icon.png" alt="오일딜러" />오일딜러</a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="#">서비스 소개</a>
+        <a href="#">시장 정보</a>
+        <a class="active" href="#">블로그</a>
+        <a href="#">문의</a>
+      </nav>
+      <div class="actions">
+        <a class="login" href="#">로그인</a>
+        <a class="button" href="#cta">무료 견적 비교</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="article-wrap">
+      <article class="article">
+        <a class="back" href="#">← 블로그 목록</a>
+        <header>
+          <a class="category" href="#">유가·시장</a>
+          <h1>유가 하락 뉴스가 내 발주 단가까지 오기 전에 생기는 일</h1>
+          <p class="lead">국제유가가 내렸는데도 다음 발주 단가가 그대로인 날이 있습니다. 이상한 일이 아닙니다. 사장님이 사는 건 WTI가 아니라, 이미 환율과 정제마진, 국내 공급가, 거래 조건을 지난 제품입니다.</p>
+          <div class="meta">
+            <strong>오일딜러 유가·마진 리서치</strong>
+            <span class="dotsep">2026년 5월 29일</span>
+            <span class="dotsep">약 7분</span>
+          </div>
+        </header>
+
+        <div class="hero-image" role="img" aria-label="국제유가에서 주유소 발주 단가까지 이어지는 흐름">
+          <div class="hero-card">
+            <div class="hero-title">
+              <small>OilDealer Market Note</small>
+              <strong>뉴스 속 유가와<br />내 발주 단가 사이의 거리</strong>
+            </div>
+            <div class="flow" aria-hidden="true">
+              <div>국제유가 <span>원유 방향</span></div>
+              <div>환율·정제마진 <span>중간 변수</span></div>
+              <div>국내 공급가 <span>적용 시차</span></div>
+              <div>내 재고 평균단가 <span>현재 손익</span></div>
+            </div>
+          </div>
         </div>
-        <section class="references"><h2>참고 자료</h2><ul class="ref-list"><li><span>오피넷 · 한국석유공사 페트로넷</span><span class="badge">숫자 검증</span></li><li><span>EIA Today in Energy · OPEC 공개 자료</span><span class="badge">시장 구조</span></li><li><span>Asymmetric price transmission · rockets and feathers 연구</span><span class="badge">이론</span></li></ul></section>
-        <section class="faq"><h2>자주 묻는 질문</h2><details><summary>국제유가가 내렸는데 거래처 단가가 그대로면 이상한 건가요?</summary><p>꼭 그렇지는 않습니다. 환율, 제품별 수급, 공급가 반영 시차, 대리점 조건, 기존 재고 영향이 있습니다.</p></details><details><summary>하락장에는 판가를 빨리 내리는 게 맞나요?</summary><p>재고가 적고 다음 발주 단가가 실제로 내려왔다면 검토할 수 있습니다. 하지만 재고가 많고 평균단가가 높다면 기존 재고 마진을 먼저 봐야 합니다.</p></details><details><summary>국제유가보다 더 먼저 봐야 할 숫자는 무엇인가요?</summary><p>현재 재고 평균단가, 다음 발주 견적, 유종별 판매 속도, 공급가 반영 여부가 더 직접적입니다.</p></details></section>
-        <p class="editor-note">본 글은 오일딜러 앱 디자인 시스템을 반영한 HTML preview입니다. 최신 국제유가·환율·국내 공급가 표현은 발행 전 공식 출처로 재검증해야 합니다.</p>
+
+        <section class="callout" aria-label="핵심 메모">
+          <b>핵심 메모</b>
+          <p>하락 뉴스가 중요한 게 아니라, 그 하락이 다음 견적서에 들어올 만큼 충분히 내려왔는지가 중요합니다. 같은 국제유가 하락이라도 환율, 제품 마진, 공급가 고시 시점, 내 재고 상황에 따라 발주 판단은 달라집니다.</p>
+        </section>
+
+        <div class="body">
+          <p>국제유가 뉴스는 주유소 운영에 필요한 선행 신호입니다. 하지만 곧바로 발주 단가가 되지는 않습니다. 원유 가격이 제품 가격으로 바뀌고, 원화로 환산되고, 국내 공급가와 거래처 조건을 거친 뒤에야 사장님 견적서에 들어옵니다.</p>
+
+          <p>그래서 하락장에서는 질문을 바꿔야 합니다. “유가가 내렸으니 지금 싸게 살 수 있나?”보다 먼저 봐야 할 질문은 이것입니다. <strong>이번 하락이 내 다음 발주 단가까지 내려올 하락인가, 아니면 뉴스에서만 보이는 하락인가.</strong></p>
+
+          <h2>뉴스 속 유가는 원유, 발주 단가는 제품입니다</h2>
+          <p>뉴스에서 자주 보는 유가는 원유 가격입니다. 주유소가 실제로 사는 것은 휘발유와 경유입니다. 둘 사이에는 정제 과정과 제품별 수급이 있습니다. 원유가 내려도 경유 수급이 타이트하면 경유 단가는 덜 내려올 수 있고, 환율이 오르면 원유 하락분이 원화 기준에서 줄어들 수 있습니다.</p>
+
+          <table class="simple-table">
+            <thead>
+              <tr><th>단계</th><th>사장님이 봐야 할 것</th><th>흔한 착각</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>국제유가</td><td>원유 방향과 변동 폭</td><td>원유 하락을 제품 하락으로 바로 읽음</td></tr>
+              <tr><td>환율</td><td>원화 기준 원가가 같이 내려오는지</td><td>달러 가격만 보고 체감 원가를 판단함</td></tr>
+              <tr><td>정제마진</td><td>휘발유와 경유가 따로 움직이는지</td><td>모든 유종이 같은 속도로 내려온다고 봄</td></tr>
+              <tr><td>국내 공급가</td><td>고시와 실제 적용 시점</td><td>뉴스 당일 바로 견적에 반영된다고 봄</td></tr>
+              <tr><td>재고 평균단가</td><td>현재 팔고 있는 재고의 원가</td><td>새 단가만 보고 오늘 마진을 계산함</td></tr>
+            </tbody>
+          </table>
+
+          <h2>하락 뉴스가 내 단가까지 안 내려오는 경우</h2>
+          <p>첫째, 환율이 하락분을 지울 수 있습니다. 국제유가가 달러 기준으로 내려도 원화가 약하면 국내 체감 원가는 덜 내려옵니다.</p>
+          <p>둘째, 원유와 제품은 다르게 움직입니다. 특히 경유는 산업 수요, 계절 수요, 재고 수준에 따라 휘발유와 다른 가격 흐름을 보일 수 있습니다.</p>
+          <p>셋째, 공급가에는 적용 시차가 있습니다. 오늘 뉴스가 내일 견적서에 그대로 찍히지 않습니다. 거래처마다 반영 방식도 다릅니다.</p>
+          <p>넷째, 기존 재고가 손익을 먼저 만집니다. 새 단가가 내려와도 비싼 재고를 들고 있으면 당장 체감 마진은 달라지지 않습니다.</p>
+
+          <h2>같은 하락장에서도 재고에 따라 판단이 갈립니다</h2>
+          <div class="memo-box">
+            <h3>발주 판단은 유가 방향보다 재고 위치가 먼저입니다</h3>
+            <div class="grid">
+              <div class="memo">
+                <b>재고가 적고 발주가 가까운 경우</b>
+                견적 조건을 바로 비교해야 합니다. 하락분이 실제 단가에 들어왔는지 확인하는 쪽이 우선입니다.
+              </div>
+              <div class="memo">
+                <b>재고가 많고 평균단가가 높은 경우</b>
+                새 단가보다 기존 재고 처리 속도가 먼저입니다. 판가를 너무 빨리 따라 내리면 마진이 먼저 얇아질 수 있습니다.
+              </div>
+            </div>
+          </div>
+
+          <h2>오를 때는 빠르고 내릴 때는 느리게 느껴지는 이유</h2>
+          <p>주유소 사장님들이 체감하는 가격은 시장 가격 하나로 결정되지 않습니다. 공급가, 거래 조건, 주변 판가, 재고 평균단가가 함께 움직입니다. 오를 때는 손실 회피 때문에 시장이 빨리 반응하고, 내릴 때는 비싼 재고를 들고 있는 사업자가 많아 속도가 느려집니다.</p>
+
+          <p>그래서 하락장에서 필요한 건 예측이 아닙니다. 순서 확인입니다. 국제유가가 내려갔는지, 환율이 같이 도와주는지, 국내 공급가에 들어왔는지, 내 거래처 견적에 반영됐는지, 내 재고 평균단가와 맞는지를 차례로 봐야 합니다.</p>
+
+          <h2>이번 주에는 가격보다 순서를 보세요</h2>
+          <ul>
+            <li>국제유가 하락 폭이 하루짜리인지, 며칠 이어지는 흐름인지 봅니다.</li>
+            <li>환율이 하락분을 살려주는지, 지우고 있는지 봅니다.</li>
+            <li>휘발유와 경유가 같은 방향인지 따로 움직이는지 봅니다.</li>
+            <li>다음 발주 전, 같은 조건의 견적을 두 개 이상 놓고 봅니다.</li>
+            <li>새 단가보다 내 재고 평균단가가 오늘 마진에 더 큰 영향을 주는지 확인합니다.</li>
+          </ul>
+
+          <section class="cta" id="cta">
+            <h2>뉴스가 아니라 내 발주 조건까지 내려왔는지 확인하세요</h2>
+            <p>오일딜러에서는 같은 조건의 주문과 견적을 비교해 볼 수 있습니다. 국제유가가 아니라 실제 발주 조건 기준으로 판단하세요.</p>
+            <a class="button" href="#">무료 견적 비교하기</a>
+          </section>
+
+          <section class="references">
+            <h2>참고 자료</h2>
+            <ol class="ref-list">
+              <li><span class="ref-no">1</span><div><a href="https://www.opinet.co.kr/" target="_blank" rel="noreferrer">오피넷</a><p>국내 석유제품 가격과 주유소 가격 확인 자료.</p></div></li>
+              <li><span class="ref-no">2</span><div><a href="https://www.petronet.co.kr/" target="_blank" rel="noreferrer">페트로넷</a><p>국내외 석유 시장 통계와 제품 가격 흐름 참고.</p></div></li>
+              <li><span class="ref-no">3</span><div><a href="https://www.eia.gov/" target="_blank" rel="noreferrer">U.S. Energy Information Administration</a><p>국제 원유·제품 시장 흐름 확인 자료.</p></div></li>
+            </ol>
+          </section>
+
+          <section class="faq">
+            <h2>자주 묻는 질문</h2>
+            <details>
+              <summary>국제유가가 내리면 국내 주유소 가격도 바로 내려가나요?</summary>
+              <p>바로 내려간다고 보기는 어렵습니다. 환율, 제품 가격, 국내 공급가, 재고 평균단가를 거치면서 시차가 생깁니다.</p>
+            </details>
+            <details>
+              <summary>하락장에서 발주를 늦추는 게 항상 유리한가요?</summary>
+              <p>아닙니다. 재고가 부족하면 판매 기회를 놓칠 수 있고, 하락이 견적에 반영되지 않은 상태라면 기다린 효과가 작을 수 있습니다.</p>
+            </details>
+            <details>
+              <summary>휘발유와 경유는 왜 다르게 움직이나요?</summary>
+              <p>제품별 수급이 다르기 때문입니다. 원유 방향은 같아도 정제마진과 제품 수요에 따라 유종별 가격 반영 속도가 달라질 수 있습니다.</p>
+            </details>
+          </section>
+        </div>
       </article>
-      <aside class="sidebar"><nav class="toc-card"><h3>목차</h3><a href="#avoid">일부러 안 할 말</a><a href="#product">원유와 제품</a><a href="#lag">단가까지 안 내려오는 경우</a><a href="#branch">재고별 판단 분기</a><a href="#rockets">Rockets & feathers</a><a href="#order">이번 주 순서</a><a href="#cta">오일딜러 연결</a></nav><section class="side-section feature-card"><h3>앱 디자인 반영</h3><p>보라색 브랜드 컬러, 화이트 카드, 둥근 CTA, 모바일 대시보드형 컴포넌트 적용.</p><div class="app-screens"><img src="assets/screen-2.jpg" alt="오일딜러 주문 화면"/><img src="assets/screen-3.jpg" alt="주변 주유소 시세 화면"/><img src="assets/screen-4.jpg" alt="시장 데이터 화면"/></div></section><section class="side-section"><h3>카카오 압축 컷</h3><p>사장님, 국제유가가 내려도 내 발주 단가가 바로 안 내려올 때가 있습니다. 하락장에는 판가보다 먼저 재고 평균단가를 봐야 합니다.</p></section><section class="side-section"><h3>검수 포인트</h3><ul><li>앱 보라색 톤과 맞는가</li><li>콘텐츠가 광고처럼 보이지 않는가</li><li>숫자/정책 단정이 없는가</li></ul></section></aside>
     </div>
   </main>
-  <footer><div class="container">OilDealer Blog Preview · App design system aligned</div></footer>
-  <div class="toast" id="toast">프리뷰 CTA입니다. 실제 발행 전 링크 연결 필요</div>
-  <script>function toast(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}</script>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">오일딜러</div>
+        <div>값으로 사던 기름, 이젠 데이터로.</div>
+      </div>
+      <div>© 2026 OilDealer. Blog preview.</div>
+    </div>
+  </footer>
 </body>
 </html>
