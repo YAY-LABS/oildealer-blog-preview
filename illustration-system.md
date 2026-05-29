@@ -1,25 +1,34 @@
-# OilDealer Blog Illustration System v0.1
+# OilDealer Blog Illustration System v0.2
+
+## Decision
+
+SVG flow diagrams are not the default hero direction. They look too much like internal slides and can feel cheap or brittle in the blog context.
+
+Default direction: **editorial still-life / operator desk visual**.
+
+The article explains the mechanism. The hero image sets the reading mood.
 
 ## Role
 
-오일딜러 블로그 이미지는 장식용 썸네일이 아니라, 사장님이 글의 구조를 3초 안에 이해하게 하는 시장 메모 이미지다.
+오일딜러 블로그 이미지는 장식용 썸네일이 아니라, 사장님이 글의 주제를 3초 안에 느끼게 하는 editorial visual이다.
 
 ## Tone
 
 - Clean editorial, not ad banner
 - Operator memo, not fintech landing page
-- Mechanism diagram, not cute cartoon
-- Calm but sharp
+- Quiet market briefing, not dashboard screenshot
+- Calm, premium, practical
 - Mostly white/cream canvas with one OilDealer purple accent
 
-## Visual language
+## Default visual language
 
-- One article = one hero image
-- Show flows, delays, branches, inventory position, margin pressure
-- Avoid literal oil barrels, gas pump clipart, money flying, stock-photo hands
+- One article = one hero visual
+- Prefer still-life objects: market memo, quotation sheet, calculator, pen, inventory note, printed report
+- Use graph shapes sparingly as part of a paper/document, not as the whole image
+- Avoid diagrams packed with labels
+- Avoid long text inside images
+- Avoid literal oil barrels, gas pump clipart, money flying, stock-photo people
 - Avoid app screenshot collage unless article is product tutorial
-- Use simple Korean labels when labels are necessary
-- Prefer 4–6 visual elements max
 
 ## Palette
 
@@ -34,26 +43,26 @@
 ## Composition
 
 - Aspect: wide hero, 16:9
-- Rounded corners when displayed in page, not necessarily baked into image
+- Rounded corners in page
 - Plenty of negative space
-- No dense dashboards
-- No photorealistic people
-- If people appear, use small neutral operator silhouettes, not smiling stock characters
+- One focal object cluster, not many UI widgets
+- If using generated raster images later, prefer realistic editorial still-life with soft natural light
+- If using CSS placeholder, make it feel like paper objects on a desk, not an infographic
 
-## Current article image direction
+## Current article direction
 
 Title: 유가 하락 뉴스가 내 발주 단가까지 오기 전에 생기는 일
 
-Image type: mechanism / flow diagram
+Hero concept: **하락한 유가 그래프와 아직 바뀌지 않은 발주 견적서**
 
-Core visual: A left-to-right path from 국제유가 뉴스 to 실제 발주 단가, with three friction points in between.
+Objects:
+- Market memo paper with a subtle downward graph
+- Fuel order quotation sheet
+- Calculator
+- Pen/clip or small purple accent
 
-Labels:
-- 국제유가 뉴스
-- 환율
-- 정제마진
-- 국내 공급가
-- 내 발주 단가
-- 재고 평균단가
+Mood: quiet, analytical, slightly editorial. It should feel like an experienced operator reviewing market data before placing an order, not like a SaaS marketing illustration.
 
-Mood: quiet, analytical, slightly editorial. It should feel like a briefing slide from an experienced operator, not a SaaS marketing graphic.
+## Future raster prompt direction
+
+A clean editorial still-life image for a Korean B2B blog article about gas station fuel purchasing decisions. A warm white desk with a printed market memo, a simple downward oil price line chart, a fuel order quotation sheet, a calculator, and a pen. Subtle purple accent matching #721fe5, minimal, calm, premium editorial style, soft natural light, no people, no gas pump, no oil barrel, no money, no 3D icons, no stock photo feel. The mood should feel like an experienced operator reviewing market data before placing an order. Wide 16:9 hero image, lots of negative space, high-end Korean SaaS blog aesthetic.

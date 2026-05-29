@@ -73,15 +73,36 @@
     .meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top: 24px; color: var(--sub); font-size:14px; }
     .dotsep::before { content:"·"; margin-right:8px; color:#b1b5bd; }
 
-    .hero-image {
-      display:block;
-      width:100%;
+    .hero-still {
       margin: 46px 0 52px;
+      min-height: 430px;
       border-radius: 24px;
-      border:1px solid var(--brand-line);
-      background:#fffdfa;
+      border:1px solid #eee8ff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(114,31,229,.08), transparent 24%),
+        linear-gradient(135deg, #fffdfa 0%, #fbf8ff 54%, #ffffff 100%);
       box-shadow: 0 18px 54px rgba(17,24,39,.06);
+      position:relative;
+      overflow:hidden;
     }
+    .hero-still::before { content:""; position:absolute; inset:34px 46px; border-radius:28px; background:rgba(255,255,255,.66); border:1px solid rgba(228,215,255,.72); }
+    .desk-paper { position:absolute; left:84px; top:74px; width:360px; height:250px; border-radius:18px; background:#fff; border:1px solid #ebe7f5; box-shadow:0 22px 46px rgba(17,24,39,.08); transform:rotate(-2deg); padding:28px; }
+    .paper-kicker { color:var(--brand); font-size:13px; font-weight:900; letter-spacing:.02em; text-transform:uppercase; }
+    .paper-title { margin-top:14px; color:var(--ink); font-size:26px; line-height:1.22; font-weight:900; letter-spacing:-.06em; }
+    .chart { position:absolute; left:28px; right:28px; bottom:28px; height:72px; border-bottom:1px solid #e7e4ee; border-left:1px solid #e7e4ee; }
+    .chart svg { position:absolute; inset:0; width:100%; height:100%; }
+    .quote-sheet { position:absolute; right:108px; top:102px; width:260px; height:190px; border-radius:18px; background:#fff; border:1px solid #ebe7f5; box-shadow:0 18px 42px rgba(17,24,39,.07); padding:22px; transform:rotate(1.6deg); }
+    .quote-sheet b { display:block; color:var(--ink); font-size:19px; letter-spacing:-.04em; margin-bottom:18px; }
+    .quote-line { height:10px; border-radius:999px; background:#eceef3; margin:12px 0; }
+    .quote-line.short { width:58%; }
+    .quote-line.purple { width:78%; background:#e8dcff; }
+    .calculator { position:absolute; right:286px; bottom:70px; width:150px; height:118px; border-radius:20px; background:#f7f7f9; border:1px solid #e6e8ef; box-shadow:0 14px 34px rgba(17,24,39,.06); padding:16px; }
+    .calc-screen { height:26px; border-radius:9px; background:#fff; border:1px solid #e7e8ee; margin-bottom:12px; }
+    .calc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:7px; }
+    .calc-grid span { height:14px; border-radius:5px; background:#dedfe7; }
+    .purple-clip { position:absolute; left:398px; top:70px; width:46px; height:18px; border-radius:999px; background:var(--brand); transform:rotate(18deg); box-shadow:0 10px 24px rgba(114,31,229,.20); }
+    .hero-note { position:absolute; left:500px; bottom:86px; color:#686f7b; font-size:15px; line-height:1.6; max-width:290px; }
+    .hero-note strong { display:block; color:var(--ink); font-size:18px; margin-bottom:6px; letter-spacing:-.04em; }
 
     .callout { margin: 0 0 34px; padding: 24px 28px; background:#faf9fc; border-left: 4px solid var(--brand); border-radius:16px; color:#383b45; }
     .callout b { display:block; color:var(--brand); margin-bottom:8px; font-size:15px; }
@@ -143,7 +164,11 @@
       .toc { display:none; }
       h1 { font-size: 38px; }
       .lead { font-size:18px; }
-      .hero-image { margin:34px 0 44px; border-radius:18px; }
+      .hero-still { min-height:380px; margin:34px 0 44px; border-radius:18px; }
+      .hero-still::before { inset:20px; }
+      .desk-paper { left:38px; top:60px; width:300px; height:220px; }
+      .quote-sheet { right:34px; top:112px; width:220px; height:166px; }
+      .calculator, .hero-note, .purple-clip { display:none; }
       .memo-box .grid { grid-template-columns:1fr; }
       .body { font-size:17px; line-height:1.85; }
       .body h2 { font-size:28px; margin-top:60px; }
@@ -193,11 +218,31 @@
           </div>
         </header>
 
-        <img
-          class="hero-image"
-          src="assets/hero-oil-price-lag.svg"
-          alt="국제유가 뉴스가 환율, 정제마진, 국내 공급가, 재고 평균단가를 거쳐 내 발주 단가가 되는 흐름"
-        />
+        <div class="hero-still" role="img" aria-label="하락한 유가 그래프가 그려진 시장 메모와 아직 바뀌지 않은 발주 견적서가 놓인 책상">
+          <div class="purple-clip" aria-hidden="true"></div>
+          <div class="desk-paper" aria-hidden="true">
+            <div class="paper-kicker">Market memo</div>
+            <div class="paper-title">유가 하락 뉴스와<br />다음 발주 단가</div>
+            <div class="chart">
+              <svg viewBox="0 0 300 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 18 C58 22 78 16 112 28 C152 42 178 44 214 50 C244 55 270 58 292 62" stroke="#721fe5" stroke-width="5" stroke-linecap="round"/>
+                <path d="M8 18 C58 22 78 16 112 28 C152 42 178 44 214 50 C244 55 270 58 292 62" stroke="#e4d7ff" stroke-width="14" stroke-linecap="round" opacity=".42"/>
+              </svg>
+            </div>
+          </div>
+          <div class="quote-sheet" aria-hidden="true">
+            <b>발주 견적서</b>
+            <div class="quote-line"></div>
+            <div class="quote-line short"></div>
+            <div class="quote-line purple"></div>
+            <div class="quote-line"></div>
+          </div>
+          <div class="calculator" aria-hidden="true">
+            <div class="calc-screen"></div>
+            <div class="calc-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="hero-note" aria-hidden="true"><strong>가격보다 먼저 볼 것은 순서입니다</strong>뉴스의 하락분이 실제 견적 조건까지 내려왔는지 확인해야 합니다.</div>
+        </div>
 
         <section class="callout" aria-label="핵심 메모">
           <b>핵심 메모</b>
