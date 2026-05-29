@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GPT 이미지 생성 시안 | 오일딜러 블로그</title>
+  <style>
+    * { box-sizing:border-box; }
+    :root { --brand:#721fe5; --brand-soft:#f5f0ff; --brand-line:#e4d7ff; --ink:#15151a; --text:#30313a; --sub:#737782; --line:#e8e9ee; --font:Pretendard,"Pretendard Variable","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",sans-serif; }
+    body { margin:0; color:var(--text); font-family:var(--font); letter-spacing:-.025em; background:#fff; word-break:keep-all; }
+    .top { border-bottom:1px solid var(--line); background:#fff; position:sticky; top:0; z-index:10; }
+    .top-inner { max-width:1180px; margin:0 auto; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:10px; color:var(--ink); font-weight:900; font-size:20px; }
+    .brand img { width:32px; height:32px; border-radius:9px; }
+    .top a { color:var(--brand); text-decoration:none; font-weight:850; }
+    main { max-width:1180px; margin:0 auto; padding:54px 24px 100px; }
+    .intro { max-width:800px; margin-bottom:38px; }
+    .eyebrow { display:inline-flex; padding:7px 12px; border-radius:999px; color:var(--brand); background:var(--brand-soft); font-size:14px; font-weight:850; }
+    h1 { margin:18px 0 14px; color:var(--ink); font-size:46px; line-height:1.12; letter-spacing:-.075em; }
+    .intro p { margin:0; color:#59606b; font-size:18px; line-height:1.75; }
+    .grid { display:grid; grid-template-columns:1fr; gap:54px; }
+    .item { display:grid; grid-template-columns:minmax(0, 820px) 280px; gap:42px; padding-top:42px; border-top:1px solid var(--line); align-items:start; }
+    .item:first-child { border-top:0; }
+    .frame { width:100%; border-radius:24px; overflow:hidden; border:1px solid #eee8ff; box-shadow:0 18px 54px rgba(17,24,39,.06); background:#fff; }
+    .frame img { display:block; width:100%; height:auto; }
+    .meta h2 { margin:0 0 10px; color:var(--ink); font-size:24px; line-height:1.25; letter-spacing:-.055em; }
+    .meta p { margin:0 0 14px; color:var(--sub); font-size:15px; line-height:1.65; }
+    .tag { display:inline-flex; margin:0 6px 8px 0; padding:5px 9px; border-radius:999px; background:#f3f4f6; color:#646b76; font-size:12px; font-weight:800; }
+    .pick { margin-top:16px; padding:14px 16px; border-radius:14px; background:var(--brand-soft); border:1px solid var(--brand-line); color:#462583; font-size:14px; line-height:1.55; }
+    @media (max-width: 980px) { .item { grid-template-columns:1fr; } h1 { font-size:38px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand"><img src="assets/app-icon.png" alt="" />오일딜러</div>
+      <a href="/">현재 블로그로 돌아가기 →</a>
+    </div>
+  </header>
+  <main>
+    <section class="intro">
+      <span class="eyebrow">GPT image generation</span>
+      <h1>‘주유소 운영’ 이미지 생성 시안</h1>
+      <p>GPT 이미지 생성 도구로 만든 실제 raster 이미지들이야. SVG/CSS mock보다 자연스러운지, 그리고 오일딜러 블로그 hero로 어떤 방향이 맞는지 보기 위한 페이지.</p>
+    </section>
+    <div class="grid">
+      <section class="item">
+        <div class="frame"><img src="assets/generated/gpt-station-ops-v1.png" alt="작은 주유소 운영 시스템 콘셉트 이미지" /></div>
+        <aside class="meta">
+          <h2>1. 운영 시스템 슬로건형</h2>
+          <p>주유소 전경 + 큰 카피가 들어간 버전. 방향은 명확하지만 캠페인/랜딩 배너 느낌이 강함.</p>
+          <span class="tag">가독성 좋음</span><span class="tag">광고 느낌</span><span class="tag">generic</span>
+          <div class="pick">서비스 소개나 카테고리 대표 이미지에는 가능. 조용한 블로그 hero로는 조금 세일즈 느낌.</div>
+        </aside>
+      </section>
+      <section class="item">
+        <div class="frame"><img src="assets/generated/gpt-station-ops-v2.png" alt="이른 아침 조용한 주유소 전경 이미지" /></div>
+        <aside class="meta">
+          <h2>2. 조용한 주유소 전경</h2>
+          <p>이른 아침 주유소를 editorial하게 보여주는 버전. 네 가지 중 가장 블로그 hero에 가까움.</p>
+          <span class="tag">차분함</span><span class="tag">현장 맥락</span><span class="tag">살짝 이상화</span>
+          <div class="pick">현재 1순위 후보. 단, 가격표/문구 디테일을 더 현실적으로 낮추면 좋음.</div>
+        </aside>
+      </section>
+      <section class="item">
+        <div class="frame"><img src="assets/generated/gpt-station-office-v1.png" alt="주유소 사무실에서 운영 문서와 모니터를 보는 이미지" /></div>
+        <aside class="meta">
+          <h2>3. 사무실 운영 데스크</h2>
+          <p>주유소 사무실 내부, 문서, 계산기, 모니터. 운영/정산/재고 글에는 맞지만 SaaS 광고 느낌이 있음.</p>
+          <span class="tag">운영 맥락</span><span class="tag">B2B</span><span class="tag">대시보드 과함</span>
+          <div class="pick">정산/재고/시스템 관련 글에는 후보. 유가 해설 글에는 조금 제품 광고처럼 보임.</div>
+        </aside>
+      </section>
+      <section class="item">
+        <div class="frame"><img src="assets/generated/gpt-station-system-v1.png" alt="주유소 운영 시스템과 재고 탱크, 데이터 대시보드를 보여주는 일러스트" /></div>
+        <aside class="meta">
+          <h2>4. 운영 시스템 설명형</h2>
+          <p>주유소, 탱크, 운영자, 데이터 화면이 모두 들어간 설명형. 완성도는 있지만 제품 explainer 성격이 강함.</p>
+          <span class="tag">설명력 높음</span><span class="tag">SaaS 느낌</span><span class="tag">조금 과함</span>
+          <div class="pick">재고/탱크 관리 글에는 쓸 수 있음. 일반 블로그 hero 기본형으로는 과하게 설명적.</div>
+        </aside>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
