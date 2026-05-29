@@ -7,6 +7,33 @@
   <meta name="description" content="국제유가가 내렸는데도 주유소 발주 단가가 바로 내려가지 않는 이유를 원유, 환율, 정제마진, 국내 공급가, 재고 평균단가의 순서로 정리했습니다." />
   <meta property="og:title" content="유가 하락 뉴스가 내 발주 단가까지 오기 전에 생기는 일 | 오일딜러" />
   <meta property="og:description" content="뉴스 속 유가와 사장님 발주 단가 사이에는 순서와 시차가 있습니다." />
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="유가·시장" />
+  <meta property="article:tag" content="국제유가" />
+  <meta property="article:tag" content="발주 단가" />
+  <meta property="article:tag" content="재고 평균단가" />
+  <meta property="article:tag" content="주유소 마진" />
+  <meta name="keywords" content="국제유가, 주유소 발주 단가, 재고 평균단가, 주유소 마진, 경유 단가, 휘발유 단가, 오일딜러" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "유가 하락 뉴스가 내 발주 단가까지 오기 전에 생기는 일",
+    "description": "국제유가가 내렸는데도 주유소 발주 단가가 바로 내려가지 않는 이유를 원유, 환율, 정제마진, 국내 공급가, 재고 평균단가의 순서로 정리했습니다.",
+    "datePublished": "2026-05-29",
+    "dateModified": "2026-05-29",
+    "author": { "@type": "Organization", "name": "오일딜러 유가·마진 리서치" },
+    "publisher": { "@type": "Organization", "name": "오일딜러" },
+    "articleSection": "유가·시장",
+    "keywords": ["국제유가", "발주 단가", "재고 평균단가", "주유소 마진", "경유 단가", "휘발유 단가"],
+    "about": [
+      { "@type": "Thing", "name": "주유소 발주" },
+      { "@type": "Thing", "name": "국내 석유제품 가격" },
+      { "@type": "Thing", "name": "재고 평균단가" }
+    ],
+    "isPartOf": { "@type": "Blog", "name": "오일딜러 블로그" }
+  }
+  </script>
   <style>
     * { box-sizing: border-box; }
     :root {
@@ -103,6 +130,12 @@
     .purple-clip { position:absolute; left:398px; top:70px; width:46px; height:18px; border-radius:999px; background:var(--brand); transform:rotate(18deg); box-shadow:0 10px 24px rgba(114,31,229,.20); }
     .hero-note { position:absolute; left:500px; bottom:86px; color:#686f7b; font-size:15px; line-height:1.6; max-width:290px; }
     .hero-note strong { display:block; color:var(--ink); font-size:18px; margin-bottom:6px; letter-spacing:-.04em; }
+    .hero-image { margin:46px 0 52px; border-radius:24px; overflow:hidden; border:1px solid #eee8ff; box-shadow:0 18px 54px rgba(17,24,39,.06); background:#fff; }
+    .hero-image img { display:block; width:100%; height:auto; }
+    .hero-image figcaption { padding:14px 18px; color:#858b96; font-size:13px; line-height:1.55; background:#fff; border-top:1px solid #f0ecfb; }
+    .topic-index { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 0; padding:0; list-style:none; }
+    .topic-index a { display:inline-flex; padding:7px 11px; border-radius:999px; background:#f3f4f6; color:#646b76; text-decoration:none; font-size:13px; font-weight:800; }
+    .topic-index a.primary { background:var(--brand-soft); color:var(--brand); }
 
     .callout { margin: 0 0 34px; padding: 24px 28px; background:#faf9fc; border-left: 4px solid var(--brand); border-radius:16px; color:#383b45; }
     .callout b { display:block; color:var(--brand); margin-bottom:8px; font-size:15px; }
@@ -132,7 +165,7 @@
     .cta p { margin:0 auto 26px; max-width:620px; color:rgba(255,255,255,.88); font-size:17px; line-height:1.75; }
     .cta .button { background:#fff; color:var(--brand); border-color:#fff; }
 
-    .references, .faq { margin-top: 72px; padding-top: 38px; border-top:1px solid var(--line); }
+    .references, .faq, .related-posts { margin-top: 72px; padding-top: 38px; border-top:1px solid var(--line); }
     .references { color:var(--sub); }
     .references h2, .faq h2 { margin:0 0 22px; font-size:28px; color:var(--ink); letter-spacing:-.055em; }
     .references h2 { font-size:22px; color:#555b66; font-weight:800; }
@@ -144,6 +177,15 @@
     details { border:1px solid var(--line); border-radius:15px; padding:18px 20px; margin:12px 0; background:#fff; }
     summary { cursor:pointer; font-weight:850; color:var(--ink); }
     details p { margin:14px 0 0; color:#555b66; font-size:16px; line-height:1.75; }
+    .related-posts h2 { margin:0 0 10px; color:var(--ink); font-size:28px; letter-spacing:-.055em; }
+    .related-posts .related-lead { margin:0 0 22px; color:var(--sub); font-size:15px; line-height:1.65; }
+    .related-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+    .related-card { display:block; padding:20px; border:1px solid var(--line); border-radius:18px; background:#fff; text-decoration:none; box-shadow:0 10px 30px rgba(17,24,39,.04); }
+    .related-card .rel-kicker { display:block; margin-bottom:10px; color:var(--brand); font-size:13px; font-weight:900; }
+    .related-card strong { display:block; color:var(--ink); font-size:18px; line-height:1.35; letter-spacing:-.05em; }
+    .related-card p { margin:10px 0 0; color:#68707c; font-size:14px; line-height:1.6; }
+    .related-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+    .related-tags span { padding:4px 7px; border-radius:999px; background:#f3f4f6; color:#7a808b; font-size:11px; font-weight:800; }
 
     footer { margin-top: 110px; border-top:1px solid var(--line); background:#fff; }
     .footer-inner { max-width:var(--max); margin:0 auto; padding:42px 24px 54px; color:var(--sub); font-size:14px; display:flex; align-items:flex-start; justify-content:space-between; gap:30px; }
@@ -165,6 +207,7 @@
       h1 { font-size: 38px; }
       .lead { font-size:18px; }
       .hero-still { min-height:380px; margin:34px 0 44px; border-radius:18px; }
+      .hero-image { margin:34px 0 44px; border-radius:18px; }
       .hero-still::before { inset:20px; }
       .desk-paper { left:38px; top:60px; width:300px; height:220px; }
       .quote-sheet { right:34px; top:112px; width:220px; height:166px; }
@@ -173,6 +216,7 @@
       .body { font-size:17px; line-height:1.85; }
       .body h2 { font-size:28px; margin-top:60px; }
       .simple-table { display:block; overflow-x:auto; white-space:nowrap; }
+      .related-grid { grid-template-columns:1fr; }
       .footer-inner { display:block; }
     }
   </style>
@@ -205,7 +249,7 @@
   <main id="content">
     <div class="article-wrap">
       <div class="content-layout">
-      <article class="article">
+      <article class="article" data-post-id="oil-price-drop-order-cost-lag" data-category="유가·시장" data-series="사장님, 이번 주 유가는요" data-tags="국제유가,발주 단가,재고 평균단가,주유소 마진,경유 단가" data-related-topics="하락장 발주,공급가 시차,재고 평균단가">
         <a class="back" href="#">← 블로그 목록</a>
         <header>
           <a class="category" href="#">유가·시장</a>
@@ -216,9 +260,21 @@
             <span class="dotsep">2026년 5월 29일</span>
             <span class="dotsep">약 7분</span>
           </div>
+          <ul class="topic-index" aria-label="글 색인 태그">
+            <li><a class="primary" href="#" data-topic="국제유가">국제유가</a></li>
+            <li><a href="#" data-topic="발주 단가">발주 단가</a></li>
+            <li><a href="#" data-topic="재고 평균단가">재고 평균단가</a></li>
+            <li><a href="#" data-topic="주유소 마진">주유소 마진</a></li>
+            <li><a href="#" data-topic="공급가 시차">공급가 시차</a></li>
+          </ul>
         </header>
 
-        <div class="hero-still" role="img" aria-label="하락한 유가 그래프가 그려진 시장 메모와 아직 바뀌지 않은 발주 견적서가 놓인 책상">
+        <figure class="hero-image">
+          <img src="assets/generated/gpt-illustration-ops-v5-office-window-no-tank.png" alt="주유소 사무실 책상에서 견적서와 체크리스트를 보며 창밖 주유소 전경을 확인하는 일러스트" />
+          <figcaption>탱크·설비보다 사장님의 발주 판단 장면을 중심에 둔 오일딜러 블로그 hero 이미지.</figcaption>
+        </figure>
+
+        <div class="hero-still old-hero" hidden role="img" aria-label="하락한 유가 그래프가 그려진 시장 메모와 아직 바뀌지 않은 발주 견적서가 놓인 책상">
           <div class="purple-clip" aria-hidden="true"></div>
           <div class="desk-paper" aria-hidden="true">
             <div class="paper-kicker">Market memo</div>
@@ -334,6 +390,31 @@
               <summary>휘발유와 경유는 왜 다르게 움직이나요?</summary>
               <p>제품별 수급이 다르기 때문입니다. 원유 방향은 같아도 정제마진과 제품 수요에 따라 유종별 가격 반영 속도가 달라질 수 있습니다.</p>
             </details>
+          </section>
+
+          <section class="related-posts" id="related-posts" aria-label="관련글" data-related-source="topic-index" data-match-fields="category,tags,series,related-topics">
+            <h2>관련글</h2>
+            <p class="related-lead">관련글은 제목만 비슷한 글을 붙이는 게 아니라, 글마다 카테고리·태그·시리즈·운영 상황이 색인되어 있어야 정확하게 묶입니다.</p>
+            <div class="related-grid">
+              <a class="related-card" href="#" data-category="주유소 운영·마진" data-tags="재고 평균단가,판가 조정,주유소 마진" data-relation-reason="재고 평균단가">
+                <span class="rel-kicker">주유소 운영·마진</span>
+                <strong>재고 평균단가가 높을 때 판가를 바로 내리면 생기는 일</strong>
+                <p>하락장에서 새 발주 단가보다 먼저 봐야 하는 기존 재고와 마진 방어 기준.</p>
+                <span class="related-tags"><span>재고 평균단가</span><span>판가 조정</span></span>
+              </a>
+              <a class="related-card" href="#" data-category="유가·시장" data-tags="환율,국제유가,국내 공급가" data-relation-reason="공급가 시차">
+                <span class="rel-kicker">유가·시장</span>
+                <strong>국제유가보다 환율이 발주 단가에 더 크게 보이는 날</strong>
+                <p>달러 기준 하락분이 원화 기준 견적서에서 줄어드는 흐름을 정리합니다.</p>
+                <span class="related-tags"><span>환율</span><span>국내 공급가</span></span>
+              </a>
+              <a class="related-card" href="#" data-category="주유소 운영·마진" data-tags="견적 비교,발주 타이밍,경유 단가" data-relation-reason="발주 단가">
+                <span class="rel-kicker">주유소 운영·마진</span>
+                <strong>다음 발주 전 견적을 두 개 이상 봐야 하는 이유</strong>
+                <p>같은 유종이라도 거래 조건과 반영 시점에 따라 사장님 실제 단가가 달라집니다.</p>
+                <span class="related-tags"><span>견적 비교</span><span>발주 타이밍</span></span>
+              </a>
+            </div>
           </section>
         </div>
       </article>
