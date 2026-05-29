@@ -66,18 +66,15 @@
     .meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top: 24px; color: var(--sub); font-size:14px; }
     .dotsep::before { content:"·"; margin-right:8px; color:#b1b5bd; }
 
-    .hero-image { margin: 46px 0 52px; height: 430px; border-radius: 24px; overflow:hidden; background:
-      radial-gradient(circle at 78% 22%, rgba(255,255,255,.34), transparent 23%),
-      linear-gradient(135deg, #ede4ff 0%, #faf8ff 48%, #ffffff 100%);
-      border:1px solid var(--brand-line); position:relative; }
-    .hero-image::before { content:""; position:absolute; inset:38px 54px; border-radius:28px; background:#fff; border:1px solid #eee8ff; box-shadow:0 24px 60px rgba(114,31,229,.13); }
-    .hero-card { position:absolute; left:88px; right:88px; top:76px; bottom:76px; display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:center; }
-    .hero-title { color:var(--ink); }
-    .hero-title small { display:block; color:var(--brand); font-size:14px; font-weight:900; margin-bottom:12px; }
-    .hero-title strong { display:block; font-size:34px; line-height:1.18; letter-spacing:-.07em; }
-    .flow { display:grid; gap:10px; }
-    .flow div { background:var(--brand-soft); border:1px solid var(--brand-line); color:#3a246a; padding:12px 14px; border-radius:14px; font-size:14px; font-weight:800; }
-    .flow span { color:var(--sub); font-weight:700; margin-left:8px; }
+    .hero-image {
+      display:block;
+      width:100%;
+      margin: 46px 0 52px;
+      border-radius: 24px;
+      border:1px solid var(--brand-line);
+      background:#fffdfa;
+      box-shadow: 0 18px 54px rgba(17,24,39,.06);
+    }
 
     .callout { margin: 0 0 34px; padding: 24px 28px; background:#faf9fc; border-left: 4px solid var(--brand); border-radius:16px; color:#383b45; }
     .callout b { display:block; color:var(--brand); margin-bottom:8px; font-size:15px; }
@@ -107,13 +104,15 @@
     .cta p { margin:0 auto 26px; max-width:620px; color:rgba(255,255,255,.88); font-size:17px; line-height:1.75; }
     .cta .button { background:#fff; color:var(--brand); border-color:#fff; }
 
-    .references, .faq { margin-top: 78px; padding-top: 46px; border-top:1px solid var(--line); }
-    .references h2, .faq h2 { margin:0 0 24px; font-size:30px; color:var(--ink); letter-spacing:-.055em; }
-    .ref-list { list-style:none; padding:0; margin:0; display:grid; gap:18px; }
-    .ref-list li { display:grid; grid-template-columns:32px 1fr; gap:14px; margin:0; }
-    .ref-no { width:32px; height:32px; border-radius:10px; display:grid; place-items:center; background:var(--brand-soft); color:var(--brand); font-weight:900; font-size:14px; }
-    .ref-list a { color:var(--ink); font-weight:800; text-decoration:none; }
-    .ref-list p { margin:4px 0 0; color:var(--sub); font-size:15px; line-height:1.6; }
+    .references, .faq { margin-top: 72px; padding-top: 38px; border-top:1px solid var(--line); }
+    .references { color:var(--sub); }
+    .references h2, .faq h2 { margin:0 0 22px; font-size:28px; color:var(--ink); letter-spacing:-.055em; }
+    .references h2 { font-size:22px; color:#555b66; font-weight:800; }
+    .ref-list { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+    .ref-list li { display:grid; grid-template-columns:24px 1fr; gap:10px; margin:0; }
+    .ref-no { width:24px; height:24px; border-radius:8px; display:grid; place-items:center; background:#f3f4f6; color:#858b96; font-weight:800; font-size:12px; }
+    .ref-list a { color:#555b66; font-weight:700; text-decoration:none; }
+    .ref-list p { margin:2px 0 0; color:#8a9099; font-size:14px; line-height:1.55; }
     details { border:1px solid var(--line); border-radius:15px; padding:18px 20px; margin:12px 0; background:#fff; }
     summary { cursor:pointer; font-weight:850; color:var(--ink); }
     details p { margin:14px 0 0; color:#555b66; font-size:16px; line-height:1.75; }
@@ -129,10 +128,7 @@
       .article-wrap { padding: 48px 20px 0; }
       h1 { font-size: 38px; }
       .lead { font-size:18px; }
-      .hero-image { height:auto; min-height:360px; margin:34px 0 44px; }
-      .hero-image::before { inset:24px; }
-      .hero-card { left:42px; right:42px; top:52px; bottom:52px; grid-template-columns:1fr; }
-      .hero-title strong { font-size:29px; }
+      .hero-image { margin:34px 0 44px; border-radius:18px; }
       .memo-box .grid { grid-template-columns:1fr; }
       .body { font-size:17px; line-height:1.85; }
       .body h2 { font-size:28px; margin-top:60px; }
@@ -152,7 +148,7 @@
 
   <header class="gnb">
     <div class="gnb-inner">
-      <a class="logo" href="#"><img src="/assets/app-icon.png" alt="오일딜러" />오일딜러</a>
+      <a class="logo" href="#"><img src="assets/app-icon.png" alt="오일딜러" />오일딜러</a>
       <nav class="nav" aria-label="주 메뉴">
         <a href="#">서비스 소개</a>
         <a href="#">시장 정보</a>
@@ -181,20 +177,11 @@
           </div>
         </header>
 
-        <div class="hero-image" role="img" aria-label="국제유가에서 주유소 발주 단가까지 이어지는 흐름">
-          <div class="hero-card">
-            <div class="hero-title">
-              <small>OilDealer Market Note</small>
-              <strong>뉴스 속 유가와<br />내 발주 단가 사이의 거리</strong>
-            </div>
-            <div class="flow" aria-hidden="true">
-              <div>국제유가 <span>원유 방향</span></div>
-              <div>환율·정제마진 <span>중간 변수</span></div>
-              <div>국내 공급가 <span>적용 시차</span></div>
-              <div>내 재고 평균단가 <span>현재 손익</span></div>
-            </div>
-          </div>
-        </div>
+        <img
+          class="hero-image"
+          src="assets/hero-oil-price-lag.svg"
+          alt="국제유가 뉴스가 환율, 정제마진, 국내 공급가, 재고 평균단가를 거쳐 내 발주 단가가 되는 흐름"
+        />
 
         <section class="callout" aria-label="핵심 메모">
           <b>핵심 메모</b>
